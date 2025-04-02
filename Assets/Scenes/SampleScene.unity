@@ -476,7 +476,7 @@ MonoBehaviour:
   - {fileID: 1706905284}
   - {fileID: 1484599359}
   - {fileID: 1292660362}
-  _enemyPrefab: {fileID: 3878759602609511799, guid: babcbc4eac768464899e8a96fbc25c88, type: 3}
+  _enemyPrefab: {fileID: 5932858553953048114, guid: babcbc4eac768464899e8a96fbc25c88, type: 3}
   _delay: 2
   _isActiveSpawn: 1
 --- !u!1 &963194225

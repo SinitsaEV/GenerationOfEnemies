@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private List<Transform> _spawnPoints;
-    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private Enemy _enemyPrefab;
 
     [SerializeField] private float _delay = 2f;
     [SerializeField] private bool _isActiveSpawn = true;
@@ -21,7 +21,9 @@ public class Spawner : MonoBehaviour
     {
         while (_isActiveSpawn)
         {
-            Instantiate(_enemyPrefab, GetRandomSpawnPoint().position, Quaternion.LookRotation(GetRandomDirection()));
+            Enemy newEnemy = Instantiate(_enemyPrefab, GetRandomSpawnPoint());
+            newEnemy.SetDirection(GetRandomDirection());
+
             yield return _time;
         }        
     }
