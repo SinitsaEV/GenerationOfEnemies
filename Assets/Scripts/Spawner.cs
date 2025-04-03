@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private List<Transform> _spawnPoints;
-    [SerializeField] private Enemy _enemyPrefab;
+    [SerializeField] private List<SpawnPoint> _spawnPoints;
 
     [SerializeField] private float _delay = 2f;
     [SerializeField] private bool _isActiveSpawn = true;
@@ -21,22 +20,14 @@ public class Spawner : MonoBehaviour
     {
         while (_isActiveSpawn)
         {
-            Enemy newEnemy = Instantiate(_enemyPrefab, GetRandomSpawnPoint());
-            newEnemy.SetDirection(GetRandomDirection());
+            GetRandomSpawnPoint().SpawnEnemy();
 
             yield return _time;
         }        
     }
 
-    private Transform GetRandomSpawnPoint()
+    private SpawnPoint GetRandomSpawnPoint()
     {
         return _spawnPoints[Random.Range(0, _spawnPoints.Count)];
-    }
-
-    private Vector3 GetRandomDirection()
-    {
-        Vector2 randomCirclePoint = Random.insideUnitCircle.normalized;
-
-        return new Vector3(randomCirclePoint.x, 0f, randomCirclePoint.y);
     }
 }
